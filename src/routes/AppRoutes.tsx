@@ -1,17 +1,17 @@
-import { Route, Routes } from "react-router"
-import Login from "@/pages/Login"
-import PrivateRoute from "./PrivateRoute"
-import Dashboard from "@/pages/Dashboard"
-import DashboardRoutes from "./DashboardRoutes"
-import MainLayout from "@/layout/MainLayout"
+import { Route, Routes } from "react-router";
+import Login from "@/pages/Login";
+import MainLayout from "@/layout/MainLayout";
+import { dashboardRoutes } from "./DashboardRoutes";
 
-type Props = {}
-
-export default function AppRoutes({}: Props) {
+export default function AppRoutes() {
   return (
     <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard/*" element={<MainLayout />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard/*" element={<MainLayout />}>
+        {dashboardRoutes.map(({ path, element }) => (
+          <Route key={path} path={path} element={element} />
+        ))}
+      </Route>
     </Routes>
-  )
+  );
 }

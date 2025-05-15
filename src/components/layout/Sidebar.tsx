@@ -7,20 +7,20 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguageStore } from "@/store/useLanguageStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { Button } from "@/components/ui/button";
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  LayoutDashboard, 
-  Users, 
-  Shield, 
-  ParkingSquare, 
-  Cpu, 
-  Bell, 
-  Settings, 
-  FileText, 
-  TicketCheck, 
-  Languages, 
-  LogOut 
+import {
+  ChevronLeft,
+  ChevronRight,
+  LayoutDashboard,
+  Users,
+  Shield,
+  ParkingSquare,
+  Cpu,
+  Bell,
+  Settings,
+  FileText,
+  TicketCheck,
+  Languages,
+  LogOut
 } from "lucide-react";
 import { useSidebarStore } from "@/store/useSidebarStore";
 
@@ -39,12 +39,19 @@ const sidebarItems: SidebarItem[] = [
     path: "/dashboard",
     translationKey: "dashboard.title",
     permissionModule: "dashboard",
-  }
+  },
+  {
+    title: "Dashboard",
+    icon: LayoutDashboard,
+    path: "/dashboarsdd",
+    translationKey: "dashboard.title",
+    permissionModule: "dashboard",
+  },
 ];
 
 export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
-  const { isOpen, toggle, close, open } = useSidebarStore();
+  const { isOpen, toggle, close, open, dark, toggleTheme } = useSidebarStore();
 
   const isMobile = useIsMobile();
   const { pathname } = useLocation();
@@ -70,15 +77,16 @@ export function Sidebar() {
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 h-screen bg-sidebar z-40 transition-all duration-300 border-r border-border",
-        isOpen ? "w-64" : "w-16"
+        "fixed top-0 left-0 h-screen bg-coal-600 z-40 transition-all duration-300 border-r border-border sidebar-no-dark-content",
+        isOpen ? "w-64" : "w-16",
+        dark ? 'dark' : 'bg-white'
       )}
     >
       <div className="flex flex-col h-full">
         {/* Sidebar header with logo */}
         <div className="h-16 flex items-center justify-between px-4 ">
           {isOpen && (
-            <div className="text-xl font-bold text-primary">Park Pilot</div>
+            <div className="text-xl font-bold text-primary" onClick={toggleTheme}>Rahatbina</div>
           )}
           <Button
             variant="ghost"
@@ -102,11 +110,14 @@ export function Sidebar() {
                     className={cn(
                       "flex items-center py-2 px-3 rounded-md transition-colors",
                       pathname === item.path
-                        ? "bg-primary text-primary-foreground"
-                        : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                        ? "bg-primary text-white"
+                        : dark
+                          ? "text-white hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                          : "text-coal hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                       !isOpen ? "justify-center" : "justify-start"
                     )}
                   >
+
                     <item.icon size={20} />
                     {isOpen && (
                       <span className="ml-3 text-sm whitespace-nowrap ">{translate(item.translationKey)}</span>

@@ -1,0 +1,29 @@
+.sidebar-no-dark-content {
+  /* Dark mod içindeyken bile açık tema gibi görünsün */
+  color-scheme: light;
+  --foreground: hsl(223, 32%, 22%);
+  --primary-foreground: hsla(0, 0%, 100%, 0.453);
+  --sidebar-link: hsl(223, 32%, 22%);
+  --sidebar-hover-bg: hsla(0, 0%, 51%, 0.53);
+  --sidebar-hover-text: hsl(223, 32%, 22%);
+}
+
+.sidebar-no-dark-content a,
+.sidebar-no-dark-content span,
+.sidebar-no-dark-content svg,
+.sidebar-no-dark-content button {
+  color: var(--sidebar-link);
+}
+
+.dark.sidebar-no-dark-content a,
+.dark.sidebar-no-dark-content span,
+.dark.sidebar-no-dark-content svg,
+.dark.sidebar-no-dark-content button {
+  color: white;
+}
+
+.sidebar-no-dark-content a:hover,
+.sidebar-no-dark-content button:hover {
+  background-color: var(--sidebar-hover-bg);
+  color: var(--sidebar-hover-text);
+}

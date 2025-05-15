@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Header } from "@/components/layout/Header";
+import { SettingsSidebar } from "@/components/layout/SettingsSideBar";
 
 export default function MainLayout() {
   const { settings } = useSettingsStore();
@@ -39,6 +40,7 @@ export default function MainLayout() {
           <Outlet />
         </main>
       </div>
+      <SettingsSidebar />
     </div>
   );
 }

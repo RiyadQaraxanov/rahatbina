@@ -8,3 +8,5 @@
 
 /* Shadcn UI */
 @import "shadcn.ui";
+
+@import "custom"

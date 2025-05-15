@@ -1,9 +1,8 @@
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-
-export type ThemeMode = 'light' | 'dark' | 'system';
-export type Language = 'tr' | 'en' | 'de' | 'fr' | 'ar';
+export type ThemeMode = "light" | "dark" | "system";
+export type Language = "tr" | "en" | "de" | "fr" | "ar";
 
 export type SystemSettings = {
   theme: ThemeMode;
@@ -26,13 +25,17 @@ type SettingsStore = {
   settings: SystemSettings;
   updateSettings: (settings: Partial<SystemSettings>) => void;
   resetSettings: () => void;
+  isOpen: boolean;
+  toggle: () => void;
+  open: () => void;
+  close: () => void;
 };
 
 const defaultSettings: SystemSettings = {
-  theme: 'system',
-  language: 'tr',
+  theme: "system",
+  language: "tr",
   notificationsEnabled: true,
-  appVersion: '1.0.0',
+  appVersion: "1.0.0",
   lastUpdated: new Date(),
 };
 
@@ -52,9 +55,13 @@ export const useSettingsStore = create<SettingsStore>()(
       resetSettings: () => {
         set({ settings: defaultSettings });
       },
+      isOpen: false,
+      toggle: () => set((state) => ({ isOpen: !state.isOpen })),
+      open: () => set({ isOpen: true }),
+      close: () => set({ isOpen: false }),
     }),
     {
-      name: 'park-pilot-settings',
+      name: "park-pilot-settings",
     }
   )
 );

@@ -25,7 +25,7 @@ export function Header() {
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
   const translate = useLanguageStore((state) => state.translate);
-  const { settings, updateSettings } = useSettingsStore();
+  const { settings, updateSettings, toggle } = useSettingsStore();
   const { unreadCount, notifications, fetchNotifications, markAsRead } =
     useNotificationStore();
 
@@ -75,7 +75,7 @@ export function Header() {
           {settings.theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </Button>
         {/* Settings */}
-        <Button variant="ghost" size="icon" onClick={toggleTheme}>
+        <Button variant="ghost" size="icon" onClick={toggle}>
             <Settings size={20} />
         </Button>
 

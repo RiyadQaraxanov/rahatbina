@@ -1,15 +1,6 @@
-import MainLayout from '@/layout/MainLayout'
-import Dashboard from '@/pages/Dashboard'
-import Login from '@/pages/Login'
-import { Route, Routes } from 'react-router'
+import Dashboard from '@/pages/Dashboard';
 
-type Props = {}
-
-export default function DashboardRoutes({}: Props) {
-  return (
-    <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-    </Routes>
-  )
-}
+export const dashboardRoutes = [
+  { path: "", element: <Dashboard /> },
+  // diğer dashboard alt rotaları
+];
