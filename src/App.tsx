@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
+import AppRoutes from '@/routes/AppRoutes';
 const { BASE_URL } = import.meta.env;
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <BrowserRouter
       basename={BASE_URL}
     >
-
+      <AppRoutes />
     </BrowserRouter>
   )
 }
